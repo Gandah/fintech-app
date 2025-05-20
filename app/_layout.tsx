@@ -3,15 +3,20 @@ import { useFonts } from "expo-font";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import "react-native-reanimated";
+// import "react-native-reanimated";
 import { Link, Stack, useRouter, useSegments } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import { TouchableOpacity, Text, View, ActivityIndicator } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 import * as SecureStore from "expo-secure-store";
+import {
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import Colors from "@/constants/Colors";
 
 // Cache the Clerk JWT
 const tokenCache = {
@@ -140,7 +145,10 @@ export function InitialLayout() {
 }
 
 export default function RootLayoutNav() {
+  const queryClient = new QueryClient();
+
   return (
+    <QueryClientProvider client={queryClient}>
     <ClerkProvider
       publishableKey={CLERK_PUBLISHABLE_KEY!}
       tokenCache={tokenCache}
@@ -150,5 +158,6 @@ export default function RootLayoutNav() {
         <InitialLayout />
       </GestureHandlerRootView>
     </ClerkProvider>
+    </QueryClientProvider>
   );
 }

@@ -3,9 +3,26 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import CustomHeader from '@/components/CustomHeader';
+import { useEffect, useState } from 'react';
+
 
 
 const Layout = () => {
+  // const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch('https://localhost:8081/api/info');
+  //     const data = await response.json();
+  //     console.log('Fetched Data: ', data)
+  //     setData(data);
+  //   };
+  //   fetchData();
+  // }, []);
+
+
+
+
   return (
     <Tabs
       screenOptions={{
@@ -78,5 +95,6 @@ const Layout = () => {
     </Tabs>
   );
 };
+
 
 export default Layout
