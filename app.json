@@ -24,22 +24,47 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      ["expo-router",
+      [
+        "expo-router",
         {
           "origin": "http://localhost:8081"
-      }
+        }
       ],
       "expo-secure-store",
       [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to use Face ID."
+        }
+      ],
+      [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-asset"
+            [
+        "expo-dynamic-app-icon",
+        {
+            "initial": {
+            "image": "./assets/images/icon.png",
+            "prerendered": true
+          },
+          "dark": {
+            "image": "./assets/images/icon-dark.png",
+            "prerendered": true
+          },
+              "vivid": {
+            "image": "./assets/images/icon-vivid.png",
+            "prerendered": true
+          }
+        }
+      ],
+      "expo-asset",
+      "expo-dynamic-app-icon"
     ],
     "experiments": {
       "typedRoutes": true

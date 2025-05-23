@@ -10,7 +10,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 const cryto = () => {
   const headerHeight = useHeaderHeight();
-  // const [data, setData] = useState(null)
 
   const currencies = useQuery({
     queryKey: ['listings'],
